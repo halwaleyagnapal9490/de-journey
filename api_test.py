@@ -9,9 +9,19 @@ params = {
     "forecast_days": 1,
 }
 
-response = requests.get(url, params=params, timeout=10)
-response.raise_for_status()
-data = response.json()
+try:
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+except requests.exceptions.Timeout:
+    print("Request timed out. The API may be slow or unreachable.")
+    raise
+except requests.exceptions.HTTPError as e:
+    print(f"HTTP error occurred: {e}")
+    raise
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred while fetching data: {e}")
+    raise
 
 df = pd.DataFrame({
     "time": data["hourly"]["time"],
