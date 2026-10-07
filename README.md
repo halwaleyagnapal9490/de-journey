@@ -1,5 +1,8 @@
 ## Project 1: Weather API ETL Pipeline
 
+### Dashboard
+![Weather dashboard](weather_dashboard.pbix/dashboard.png.png)
+
 A simple ETL (Extract, Transform, Load) pipeline that:
 - **Extracts** hourly temperature data for multiple cities (Delhi, Mumbai, Hyderabad) from the [Open-Meteo API](https://open-meteo.com/)
 - **Transforms** the JSON responses into a clean pandas DataFrame, combining all cities into one dataset with proper datetime parsing and rounded values
